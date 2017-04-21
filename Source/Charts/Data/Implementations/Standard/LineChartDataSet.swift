@@ -57,7 +57,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     ///
     /// **default**: 0.2
     open var cubicIntensity: CGFloat
-    {
+        {
         get
         {
             return _cubicIntensity
@@ -78,7 +78,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     
     @available(*, deprecated: 1.0, message: "Use `mode` instead.")
     open var drawCubicEnabled: Bool
-    {
+        {
         get
         {
             return mode == .cubicBezier
@@ -89,12 +89,17 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         }
     }
     
+    /// If true, gradient lines are drawn instead of solid
+    open var drawGradientEnabled = false
+    /// - returns: true if drawing gradeint lines is enabled, false if not.
+    open var isDrawGradientEnabled: Bool { return drawGradientEnabled }
+    
     @available(*, deprecated: 1.0, message: "Use `mode` instead.")
     open var isDrawCubicEnabled: Bool { return drawCubicEnabled }
     
     @available(*, deprecated: 1.0, message: "Use `mode` instead.")
     open var drawSteppedEnabled: Bool
-    {
+        {
         get
         {
             return mode == .stepped
@@ -175,12 +180,15 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     /// Line cap type, default is CGLineCap.Butt
     open var lineCapType = CGLineCap.butt
     
+    /// This is the points where gradient should change color
+    open var gradientPositions: [CGFloat]?
+    
     /// formatter for customizing the position of the fill-line
     fileprivate var _fillFormatter: IFillFormatter = DefaultFillFormatter()
     
     /// Sets a custom IFillFormatter to the chart that handles the position of the filled-line for each DataSet. Set this to null to use the default logic.
     open var fillFormatter: IFillFormatter?
-    {
+        {
         get
         {
             return _fillFormatter
@@ -211,6 +219,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
         copy.lineCapType = lineCapType
         copy.drawCirclesEnabled = drawCirclesEnabled
         copy.drawCircleHoleEnabled = drawCircleHoleEnabled
+        copy.drawGradientEnabled = drawGradientEnabled
         copy.mode = mode
         return copy
     }
