@@ -137,6 +137,9 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, IBarChartDat
     
     // MARK: - Styling functions and accessors
     
+    // When enabled, the bar borders will be rounded.
+    open var drawRoundedBordersEnabled = false
+    
     /// the color used for drawing the bar-shadows. The bar shadows is a surface behind the bar that indicates the maximum value
     open var barShadowColor = NSUIColor(red: 215.0/255.0, green: 215.0/255.0, blue: 215.0/255.0, alpha: 1.0)
 

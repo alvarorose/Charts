@@ -25,6 +25,9 @@ public protocol IBarChartDataSet: IBarLineScatterCandleBubbleChartDataSet
     /// - returns: The maximum number of bars that can be stacked upon another in this DataSet.
     var stackSize: Int { get }
     
+    /// - returns: `true` if the bar borders are rounded.
+    var drawRoundedBordersEnabled: Bool { get }
+    
     /// the color used for drawing the bar-shadows. The bar shadows is a surface behind the bar that indicates the maximum value
     var barShadowColor: NSUIColor { get set }
     
