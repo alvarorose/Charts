@@ -636,7 +636,11 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     /// - returns: The actual position in pixels of the MarkerView for the given Entry in the given DataSet.
     open func getMarkerPosition(highlight: Highlight) -> CGPoint
     {
-        return CGPoint(x: highlight.drawX, y: highlight.drawY)
+        if self is RadarChartView {
+            return CGPoint(x: highlight.xPx, y: highlight.yPx)
+        } else {
+            return CGPoint(x: highlight.drawX, y: highlight.drawY)
+        }
     }
     
     // MARK: - Animation
